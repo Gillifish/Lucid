@@ -97,7 +97,9 @@ namespace PasswordManager
             };
 
             Console.WriteLine("[Lucid] Adding account...");
-            DBAccess.AddEntry(NewAccount);
+            
+            //TODO: Add function for adding database entries
+
             Console.WriteLine("[Lucid] Account successfully added");
         }
 
@@ -114,14 +116,18 @@ namespace PasswordManager
             user = Console.ReadLine();
 
             Console.WriteLine("[Lucid] Removing account...");
-            DBAccess.RemoveEntryByAccName(accName, user);
+            
+            //TODO: Add function for removing database entries
+
             Console.WriteLine("[Lucid] Account removed");
         }
 
         public static void ListProcess()
         {
             Console.WriteLine("[LUCID] Now listing all accounts...");
-            DBAccess.ListAccounts();
+            
+
+            //TODO: Add function for listing database entries
         }
 
         public static string[] CreateAccount()
@@ -152,7 +158,9 @@ namespace PasswordManager
             if(ans == "y")
             {
                 Console.WriteLine("[Lucid] Wiping Database...");
-                DBAccess.ClearData();
+                
+                //TODO: Add function for clearing database
+
                 Console.WriteLine("[Lucid] Database wiped");
             }
 
