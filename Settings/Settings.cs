@@ -1,7 +1,8 @@
-﻿using LucidCLI.Database;
+﻿using System;
+using System.IO;
 using System.Text.Json;
 
-namespace LucidCLI.Settings
+namespace Lucid.Settings
 {
     public class Settings
     {

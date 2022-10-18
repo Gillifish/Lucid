@@ -1,6 +1,8 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.IO;
+using System.Text.Json;
 
-namespace LucidCLI.Database
+namespace Lucid.Database
 {
     public class AccountDB
     {

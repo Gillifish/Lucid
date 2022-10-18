@@ -1,5 +1,6 @@
-﻿using LucidCLI.Database;
-using LucidCLI.Settings;
+﻿using System;
+using Lucid.Database;
+using Lucid.Settings;
 
 public class Program
 {
