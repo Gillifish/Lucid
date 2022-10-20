@@ -11,4 +11,4 @@ This software can be either run as a dotnet project or packed as a global tool.
 2. In the terminal run: 
   > dotnet pack
   
-  > dotnet tool install --global --add-source ./nupkg ProgramDirName
+  > dotnet tool install --global --add-source ./nupkg Lucid
