@@ -75,6 +75,7 @@ public class Program
 
             while (true)
             {
+                Console.Write("> ");
                 var ans = Console.ReadLine();
 
                 if (ans == "y")
@@ -113,9 +114,11 @@ public class Program
 
         Console.WriteLine("[Lucid] Select an account to remove by entering the account name and username");
         Console.WriteLine("Enter the account name: ");
+        Console.Write("> ");
         accName = Console.ReadLine();
 
         Console.WriteLine("Enter the username: ");
+        Console.Write("> ");
         user = Console.ReadLine();
 
         Console.WriteLine("[Lucid] Removing account...");
@@ -134,12 +137,15 @@ public class Program
         string[] acc = new string[3];
 
         Console.WriteLine("Enter Account Name:");
+        Console.Write("> ");
         acc[0] = Console.ReadLine();
 
         Console.WriteLine("Enter Username:");
+        Console.Write("> ");
         acc[1] = Console.ReadLine();
 
         Console.WriteLine("Enter Password:");
+        Console.Write("> ");
         acc[2] = Console.ReadLine();
 
         return acc;
@@ -151,6 +157,7 @@ public class Program
         Console.WriteLine("[Lucid] This action is destructive and data cannot be recovered!");
         Console.WriteLine();
         Console.WriteLine("Delete all data? [y/n]");
+        Console.Write("> ");
 
         var ans = Console.ReadLine();
 
@@ -175,9 +182,11 @@ public class Program
         {
             Console.WriteLine("[Lucid] Welcome to Lucid!");
             Console.WriteLine("Please enter a username: ");
+            Console.Write("> ");
             settings.Username = Console.ReadLine();
 
             Console.WriteLine("Please enter a PIN: ");
+            Console.Write("> ");
             settings.PIN = Console.ReadLine();
 
             settings.Init = true;
@@ -194,6 +203,7 @@ public class Program
         while (true)
         {
             Console.WriteLine("[Lucid] Enter PIN: ");
+            Console.Write("> ");
             var input = Console.ReadLine();
 
             if (settings.PIN == input)
