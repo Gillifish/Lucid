@@ -1,4 +1,6 @@
-namespace Lucid.Database
+using Lucid.Database;
+
+namespace Lucid.IO
 {
 
     /*
