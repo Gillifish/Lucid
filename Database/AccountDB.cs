@@ -1,79 +1,134 @@
-﻿using System;
-using System.IO;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace Lucid.Database
 {
     public class AccountDB
     {
-        private static readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        private static readonly string filename = path + "/LucidDBCLI.json";
+        private static bool DEBUG = true;
+        private string filepath;
+        private List<Account> accountData;
 
-        public static void GenerateFile()
-        {
-            Console.WriteLine("[Lucid] Generating database file...");
+        /*
+            Constructor for the AccountDB class.
+            Takes a string argument for the filename and loads the file data into memory.
+        */
 
-            File.WriteAllText(filename, "[]");
+        public AccountDB(string filename)
+        {   
+            if (filename.Length == 0 || filename == null)
+            {
+                throw new ArgumentException("filename cannot be empty or null");
+            }
+
+            string path = "";
+
+            if (DEBUG)
+            {
+                path = "/Users/gillifish/Desktop";
+            } else 
+            {
+                path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            }
+
+            this.filepath = path + "/" + filename;
+
+            if (!File.Exists(this.filepath))
+            {
+                File.WriteAllText(this.filepath, "[]");
+            }
+
+            this.accountData = LoadFileData(this.filepath);
         }
 
-        public static List<Account> ReturnData()
+        /*
+            This method loads the account data into the objects account list.
+            Will then return the account data that was just loaded.
+        */
+
+        public List<Account> LoadFileData(string filepath)
         {
-            List<Account> accList;
+            if (!File.Exists(this.filepath))
+            {
+                throw new FileNotFoundException("file not found");
+            }
 
-            var rawData = File.ReadAllText(filename);
-            accList = JsonSerializer.Deserialize<List<Account>>(rawData);
+            string rawData = File.ReadAllText(filepath);
+            List<Account> data = JsonSerializer.Deserialize<List<Account>>(rawData);
 
-            return accList;
+            return data;
         }
 
-        public static void AddEntry(Account acc)
+        /*
+            Saves data loaded into the account list into the file.
+        */
+
+        public void SaveData()
         {
-            List<Account> currentData = ReturnData();
-
-            currentData.Add(acc);
-
-            var serializedData = JsonSerializer.Serialize(currentData);
-            File.WriteAllText(filename, serializedData);
+            string serializedData = JsonSerializer.Serialize(this.accountData);
+            File.WriteAllText(this.filepath, serializedData);
         }
 
-        public static void ListAccounts()
-        {
-            List<Account> data = ReturnData();
+        /*
+            Adds an account to the database.
+            Returns the account that was added.
+            Throws and ArgumentNullException if the account of any of its values are null.
+        */
 
-            foreach (var item in data)
+        public Account AddEntry(Account acc)
+        {
+            if (acc == null || acc.AccountName == null || acc.Username == null || acc.Password == null)
+            {
+                throw new ArgumentNullException("Account or any of its values cannot be null");
+            }
+
+            this.accountData.Add(acc);
+            SaveData();
+
+            return acc;
+        }
+
+        // Lists all accounts to the console.
+
+        public void ListAccounts()
+        {
+            foreach (var item in this.accountData)
             {
                 Console.WriteLine(item.ToString());
             }
         }
 
-        public static void RemoveEntryByAccName(string accName, string user)
-        {
-            List<Account> data = ReturnData();
+        /*
+            Removes an account by the account name and username.
+            Returns true if the account was found
+        */
 
-            foreach (var item in data)
+        public bool RemoveEntryByAccountName(string accName, string user)
+        {
+            foreach (Account item in this.accountData)
             {
                 if(accName == item.AccountName && user == item.Username)
                 {
-                    data.Remove(item);
+                    this.accountData.Remove(item);
+                    SaveData();
+
+                    return true;
                 }
-
-                var serializedData = JsonSerializer.Serialize(data);
-                File.WriteAllText(filename, serializedData);
             }
+
+            return false;
         }
 
-        public static void FileCheck()
-        {
-            if (!File.Exists(filename))
-            {
-                GenerateFile();
-            }
-        }
+        // Returns the filepath
 
-        public static void ClearData()
-        {
-            File.WriteAllText(filename, "[]");
-        }
+        public string getFilePath() => this.filepath;
+
+        // Returns the account data
+
+        public List<Account> getAccountData() => this.accountData;
+
+        // Clears all data from the file
+
+        public void ClearData() => File.WriteAllText(this.filepath, "[]");
     }
 
     public class Account
