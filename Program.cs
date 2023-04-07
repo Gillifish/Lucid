@@ -6,7 +6,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        AccountDB db = new AccountDB("Data.json");
+        AccountDB db = new AccountDB("LucidDB.json");
 
         if (args.Length == 0)
         {

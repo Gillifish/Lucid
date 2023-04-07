@@ -4,7 +4,7 @@ namespace Lucid.Database
 {
     public class AccountDB
     {
-        private static bool DEBUG = true;
+        private static bool DEBUG = false;
         private string filepath;
         private List<Account> accountData;
 
@@ -24,7 +24,7 @@ namespace Lucid.Database
 
             if (DEBUG)
             {
-                path = "/Users/gillifish/Desktop";
+                path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             } else 
             {
                 path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
