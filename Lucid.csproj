@@ -8,6 +8,7 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>lucid</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>
+    <PublishSingleFile>true</PublishSingleFile>
   </PropertyGroup>
 
 </Project>

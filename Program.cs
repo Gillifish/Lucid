@@ -4,6 +4,8 @@ using Lucid.IO;
 
 public class Program
 {
+    public static string version = "1.1";
+
     public static void Main(string[] args)
     {
         AccountDB db = new AccountDB("LucidDB.json");
@@ -30,6 +32,9 @@ public class Program
                 break;
             case "wipe":
                 Control.Wipe(db);
+                break;
+            case "v": case "version": case "-version": case "-v":
+                Console.WriteLine($"Version {version}");
                 break;
             default:
                 Console.WriteLine("[ERROR] Unkown command...");
