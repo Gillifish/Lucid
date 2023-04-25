@@ -1,5 +1,8 @@
 namespace Lucid.Database
 {
+    /*
+        Account class for storing data.
+    */
     public class Account
     {
         public string AccountName { get; set; }
