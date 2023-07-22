@@ -1,5 +1,4 @@
-Dotnet/bin
-Dotnet/obj
+bin
+obj
 /.vscode
 .DS_Store
-Cpp/build
