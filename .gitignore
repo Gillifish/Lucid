@@ -2,3 +2,4 @@ dotnet/bin
 dotnet/obj
 /.vscode
 .DS_Store
+Cpp/build
