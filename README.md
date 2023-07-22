@@ -1,4 +1,4 @@
-# Welcome to LucidCLI!
+# Welcome to LucidCLI made in C#!
 
 This is my password manager program to store passwords in the terminal.
 
