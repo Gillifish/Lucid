@@ -1,4 +1,4 @@
-/bin
-/obj
+dotnet/bin
+dotnet/obj
 /.vscode
 .DS_Store
