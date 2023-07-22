@@ -5,7 +5,7 @@ This is my password manager program to store passwords in the terminal.
 This software can be either run as a dotnet project or packed as a global tool.
 
 
-# Global Tool Installation
+# Global Tool Installation For Dotnet version
 
 1. cd into the directory of the project.
 2. In the terminal run: 
